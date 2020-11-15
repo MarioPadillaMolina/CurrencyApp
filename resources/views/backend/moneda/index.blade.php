@@ -1,5 +1,24 @@
 @extends('backend.base')
 
+@section('postscript')
+<script src="{{ url('assets/backend/js/script.js?=' . uniqid()) }}"></script>
+<!-- Toastr -->
+<script src="{{ url('assets/backend/plugins/toastr/toastr.min.js') }}"></script>
+
+    @if(session()->get('r') == '1')
+    <script type="text/javascript">
+        Command: toastr["success"]("Currency <strong>#{{ session()->get('id') }} {{ session()->get('name') }} </strong>has been successfully {{ session()->get('op') }}", "Success")
+    </script>
+    @endif
+    
+    @if(session()->get('r') == '0')
+    <script type="text/javascript">
+        Command: toastr["error"]("Currency <strong>#{{ session()->get('id') }} {{ session()->get('name') }} </strong>has been successfully {{ session()->get('op') }}", "Success")
+    </script>
+    @endif
+
+@endsection
+
 @section('poststyle')
 <!-- Toastr -->
 <link rel="stylesheet" href="{{ url('assets/backend/plugins/toastr/toastr.min.css') }}">
@@ -78,60 +97,5 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
-@endsection
-
-@section('postscript')
-<script src="{{ url('assets/backend/js/script.js?=' . uniqid()) }}"></script>
-<!-- Toastr -->
-<script src="{{ url('assets/backend/plugins/toastr/toastr.min.js') }}"></script>
-
-
-    @if(session()->get('r') == '1')
-    <script type="text/javascript">
-        Command: toastr["success"]("Currency <strong>#{{ session()->get('id') }} {{ session()->get('name') }} </strong>has been successfully {{ session()->get('op') }}", "Success")
-        toastr.options = {
-          "closeButton": true,
-          "debug": false,
-          "newestOnTop": false,
-          "progressBar": false,
-          "positionClass": "toast-top-right",
-          "preventDuplicates": false,
-          "onclick": null,
-          "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "5000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        }
-    </script>
-    @endif
-    
-    @if(session()->get('r') == '0')
-    <script type="text/javascript">
-        Command: toastr["error"]("Currency <strong>#{{ session()->get('id') }} {{ session()->get('name') }} </strong>has been successfully {{ session()->get('op') }}", "Success")
-        toastr.options = {
-          "closeButton": true,
-          "debug": false,
-          "newestOnTop": false,
-          "progressBar": false,
-          "positionClass": "toast-top-right",
-          "preventDuplicates": false,
-          "onclick": null,
-          "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "5000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        }
-    </script>
-    @endif
-
 
 @endsection

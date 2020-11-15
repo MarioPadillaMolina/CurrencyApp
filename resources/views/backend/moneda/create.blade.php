@@ -1,6 +1,22 @@
 @extends('backend.base')
 <!-- layout/page -->
 
+@section('poststyle')
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ url('assets/backend/plugins/toastr/toastr.min.css') }}">
+@endsection
+
+@section('postscript')
+    <script src="{{ url('assets/backend/js/script.js?=' . uniqid()) }}"></script>
+    <!-- Toastr -->
+    <script src="{{ url('assets/backend/plugins/toastr/toastr.min.js') }}"></script>
+    @if (Session::get('error') !== null)
+        <script type="text/javascript">
+            Command: toastr["error"]("{{ Session::get('error') }}", "Error")
+        </script>
+    @endif
+@endsection
+
 @section('content')
     <h3>Create currency</h3>
 
@@ -80,35 +96,4 @@
     </div>
 @endsection
 
-@section('poststyle')
-    <!-- Toastr -->
-    <link rel="stylesheet" href="{{ url('assets/backend/plugins/toastr/toastr.min.css') }}">
-@endsection
 
-@section('postscript')
-    <script src="{{ url('assets/backend/js/script.js?=' . uniqid()) }}"></script>
-    <!-- Toastr -->
-    <script src="{{ url('assets/backend/plugins/toastr/toastr.min.js') }}"></script>
-    @if (Session::get('error') !== null)
-        <script type="text/javascript">
-            Command: toastr["error"]("{{ Session::get('error') }}", "Error")
-            toastr.options = {
-              "closeButton": true,
-              "debug": false,
-              "newestOnTop": false,
-              "progressBar": false,
-              "positionClass": "toast-top-right",
-              "preventDuplicates": false,
-              "onclick": null,
-              "showDuration": "300",
-              "hideDuration": "1000",
-              "timeOut": "5000",
-              "extendedTimeOut": "1000",
-              "showEasing": "swing",
-              "hideEasing": "linear",
-              "showMethod": "fadeIn",
-              "hideMethod": "fadeOut"
-            }
-        </script>
-    @endif
-@endsection

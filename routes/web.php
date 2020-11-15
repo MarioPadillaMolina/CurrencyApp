@@ -16,12 +16,13 @@ use App\Http\Controllers\IndexController;
 */
 
 //frontend
-Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::resource('moneda', MonedaController::class, ['names' => 'backend.moneda'])->only(['index', 'show']);
+Route::resource('/', MonedaController::class)->only('index');
 
 //backend
-Route::get('backend', [BackendMonedaController::class, 'main'])->name('backend.main'); //método dentro del controlador de recursos de backend
 Route::resource('backend/moneda', BackendMonedaController::class, ['names' => 'backend.moneda']);
+//método dentro del controlador de recursos de backend
+Route::get('backend', [BackendMonedaController::class, 'main'])->name('backend.main');
+
 
 //fallback
-Route::fallback([IndexController::class, 'fallback'])->name('fallback');
+Route::fallback([MonedaController::class, 'fallback'])->name('fallback');

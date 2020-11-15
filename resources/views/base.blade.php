@@ -43,26 +43,9 @@
     <!-- Toastr -->
     <script src="{{ url('assets/backend/plugins/toastr/toastr.min.js') }}"></script>
 
-    @if(session()->has('fallback'))
+    @if(session()->get('op') == 'fallback')
     <script type="text/javascript">
-        Command: toastr["warning"]("you have been redirected to the main page", "Warning")
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-left",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
+        Command: toastr["info"]("You have been redirected to the main page", "Error 404 - Route not found")
     </script>
     @endif
     
