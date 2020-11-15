@@ -59,7 +59,6 @@
                     <a href="{{ url('backend/moneda/' . $moneda->id . '/edit') }}" class="btn btn-warning">Edit</a>
                     <a href="#" data-id="{{ $moneda->id }}" data-name="{{ $moneda->name }}" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger float-right">Delete</a>                
                 </div>
-                </form>
                 <form id="formDelete" action="{{ url('backend/moneda/' . $moneda->id) }}" method="post">
                     @method('delete')
                     @csrf

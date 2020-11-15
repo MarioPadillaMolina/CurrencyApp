@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-money-bill" aria-hidden="true"></i></span>
+                                <span class="input-group-text icono-fijo"><i class="fas fa-money-bill" aria-hidden="true"></i></span>
                                 <input type="text" required maxlength="50" minlength="2" class="form-control" name="name"
                                     id="name" placeholder="Currency Name" value="{{ old('name', $moneda->name) }}">
                             </div>
@@ -44,15 +44,15 @@
                             <label for="symbol">Symbol</label>
                             <div class="input-group-prepend">
                                 <!-- forced to lowercase-->
-                                <span class="input-group-text"><i class="fas fa-hashtag" aria-hidden="true"></i></span>
+                                <span class="input-group-text icono-fijo"><i class="fas fa-hashtag" aria-hidden="true"></i></span>
                                 <input type="text" required maxlength="6" minlength="1" class="form-control" name="symbol"
-                                    id="symbol" placeholder="Currency symbol" style="text-transform: lowercase" value="{{ old('symbol', $moneda->symbol) }}">
+                                    id="symbol" placeholder="Currency symbol" value="{{ old('symbol', $moneda->symbol) }}" oninput="this.value = this.value.toUpperCase()">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="zone">Zone</label>
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                                <span class="input-group-text icono-fijo"><i class="fa fa-globe" aria-hidden="true"></i></span>
                                 <input type="text" required maxlength="80" minlength="3" class="form-control" name="zone"
                                     id="zone" placeholder="Currency zone" value="{{ old('zone', $moneda->zone) }}">
                             </div>
@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label for="value">Value (in euro)</label>
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-euro-sign" aria-hidden="true"></i></span>
+                                <span class="input-group-text icono-fijo"><i class="fas fa-euro-sign" aria-hidden="true"></i></span>
                                 <input type="number" required class="form-control" min="0.01" max="999999" step="0.01"
                                     name="value" id="value" placeholder="value" value="{{ old('value', $moneda->value) }}">
                             </div>
@@ -68,7 +68,7 @@
                         <div class="form-group">
                             <label for="creationdate">Creation date</label>
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span>
+                                <span class="input-group-text icono-fijo"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span>
                                 <input type="date" class="form-control" name="creationdate" id="creationdate"
                                     value="{{ old('creationdate', $moneda->creationdate) }}">
                             </div>
