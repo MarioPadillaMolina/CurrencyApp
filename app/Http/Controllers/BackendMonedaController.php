@@ -54,7 +54,7 @@ class BackendMonedaController extends Controller
         } catch (\Exception $e) {
             $result = 0;
         }
-
+        //dd($object);
         if ($object->id > 0) {
             $response = ['op' => 'created', 'r' => $result, 'id' => $object->id, 'name'=> $object->name];
             return redirect('backend/moneda')->with($response);

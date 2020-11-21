@@ -67,6 +67,7 @@
             <!-- /.card -->
         </div>
     </div>
+    <!--modal alert-->
     <div class="modal fade" id="modalDelete" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

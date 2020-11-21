@@ -13,7 +13,6 @@
                 alert("error validating");
                 event.preventDefault();
             }
-
         })
     }
 

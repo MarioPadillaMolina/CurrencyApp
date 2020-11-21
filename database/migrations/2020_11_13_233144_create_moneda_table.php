@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+//para que funcione la clase DB para usar sql
+use Illuminate\Support\Facades\DB;
+
 class CreateMonedaTable extends Migration
 {
     /**
@@ -23,9 +26,16 @@ class CreateMonedaTable extends Migration
             $table->date('creationdate') -> nullable(); //puede ser null
             $table->timestamps();
             
-            //La pareja nombre moneda, país moneda es única.
-            $table->unique(['id', 'zone']);
+            //La pareja name-country es única.
+            $table->unique(['name', 'zone']);
         });
+        
+        //Trigger que me convierte el campo símbolo en mayúsculas
+        DB::unprepared('
+            create trigger uppercaseSymbols
+            before insert on moneda for each row
+            set new.symbol = ucase(new.symbol)
+        ');
     }
 
     /**
