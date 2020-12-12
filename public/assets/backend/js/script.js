@@ -15,29 +15,39 @@
             }
         })
     }
-
-
-    //borrado
     
-    //los de ciclo for -> class="enlaceBorrar". Así le añadimos a cada link el ID
-    let enlacesBorrar = document.getElementsByClassName('enlaceBorrar');
-    if (enlacesBorrar) {
-        for (var i = 0; i < enlacesBorrar.length; i++) {
-            enlacesBorrar[i].addEventListener('click', getClassConfirmation);
+    //borrado
+    let launchModal = document.getElementsByClassName('launchModal');
+    if (launchModal) {
+        for (var i = 0; i < launchModal.length; i++) {
+            launchModal[i].addEventListener('click', sendModal);
         }
     }
-
-    function getClassConfirmation() {
+    
+    function sendModal(){
         let id = event.target.dataset.id;
         let name = event.target.dataset.name;
-        //let retVal = confirm('¿Seguro que quieres borrar la moneda #' + id + 'de nombre ' + name + '?');
-        //if (retVal) {
+        document.getElementById("monedaId").innerText = id;
+        document.getElementById("monedaName").innerText = name;
+        document.getElementById("modalConfirmation").setAttribute("data-id", id);
+        document.getElementById("modalConfirmation").setAttribute("data-name", name);
+    }
+    
+    
+    let modalConfirmation = document.getElementById("modalConfirmation");
+    if(modalConfirmation) {
+        modalConfirmation.addEventListener('click', getModalConfirmation);        
+    }
+    
+    function getModalConfirmation() {
+        let id = event.target.dataset.id; //data-id
+        let name = event.target.dataset.name; //data-name
             var formDelete = document.getElementById('formDelete');
             formDelete.action += '/' + id;
             formDelete.submit();
-//        }
     }
-    
+
+
     //los de id="enlaceBorrar"
     let enlaceBorrar = document.getElementById('enlaceBorrar');
     if (enlaceBorrar) {
@@ -47,11 +57,8 @@
     function getConfirmation() {
         let id = event.target.dataset.id; //data-id
         let name = event.target.dataset.name; //data-name
-        let retVal = confirm('¿Sure to delete coin #' + id + ' ' + name + '?');
-        if (retVal) {
             var formDelete = document.getElementById('formDelete');
             formDelete.submit();
-        }
     }
 
 })();

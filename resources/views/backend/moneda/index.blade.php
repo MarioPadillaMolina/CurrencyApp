@@ -19,7 +19,6 @@
             Command: toastr["error"](
                 "Currency <strong>#{{ session()->get('id') }} {{ session()->get('name') }} </strong>has been successfully {{ session()->get('op') }}",
                 "Success")
-
         </script>
     @endif
 
@@ -76,40 +75,40 @@
                                         class="fas fa-eye" aria-hidden="true"></i></a></td>
                             <td class="text-center"><a href="{{ url('backend/moneda/' . $moneda->id . '/edit') }}"><i
                                         class="fas fa-edit" aria-hidden="true"></i></a></td>
-                            <td class="text-center"><i data-toggle="modal" data-target="#modalDelete" class="fas fa-trash"
-                                    style="color: darkred; cursor: pointer"></i></td>
+                            <td class="text-center"><a href="#" class="launchModal">
+                                <i data-id="{{ $moneda->id }}" data-name="{{ $moneda->name }}" data-toggle="modal" 
+                                    data-target="#modalDelete" class="fas fa-trash" style="color: darkred; cursor: pointer"></i></a></td>
                         </tr>
-                        <!-- modal alert -->
-                        <div class="modal fade" id="modalDelete" style="display: none;" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Alert!</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>are you sure you want to delete the currency:
-                                            <strong>{{ $moneda->name }}</strong> ?
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer justify-content-between">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                        <button type="button" data-id="{{ $moneda->id }}" data-name="{{ $moneda->name }}"
-                                            class="btn btn-primary enlaceBorrar">Delete</button>
-                                    </div>
-                                </div>
-                                <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /modal alert -->
                     @endforeach
                 </table>
             </div>
         </div>
     </div>
+    <!-- modal alert -->
+    <div class="modal fade" id="modalDelete" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Alert!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>are you sure you want to delete the currency:
+                        <strong>ID: <span id="monedaId"></span> - Name: <span id="monedaName"></span></strong> ?
+                    </p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="modalConfirmation" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /modal alert -->
 
 
 

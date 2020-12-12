@@ -11,5 +11,4 @@ class Moneda extends Model
     protected $table = 'moneda';
 
     protected $fillable = ['name', 'symbol', 'zone', 'value', 'creationdate'];
-
 }

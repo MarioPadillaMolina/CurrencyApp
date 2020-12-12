@@ -175,7 +175,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+                           with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview {{ $currencyOpen ?? ''}}">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-money-bill"></i>
@@ -186,7 +186,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('backend.moneda.index') }}" class="nav-link {{ $viewOpen ?? ''}}">
+                                    <a href="{{ route('backend.moneda.index') }}" class="nav-link {{-- @Request::is('backend.moneda.index') active @endRequest--}}  {{ $viewOpen ?? ''}}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>View Currencies</p>
                                     </a>
